@@ -1,5 +1,5 @@
 
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import About from './components/About';
@@ -14,26 +14,11 @@ import Contact from './components/Contact';
 import AIChat from './components/AIChat';
 
 const App: React.FC = () => {
-  const [isDarkMode, setIsDarkMode] = useState(() => {
-    const saved = localStorage.getItem('theme');
-    return saved === 'dark' || (!saved && window.matchMedia('(prefers-color-scheme: dark)').matches);
-  });
-
-  useEffect(() => {
-    if (isDarkMode) {
-      document.documentElement.classList.add('dark');
-      localStorage.setItem('theme', 'dark');
-    } else {
-      document.documentElement.classList.remove('dark');
-      localStorage.setItem('theme', 'light');
-    }
-  }, [isDarkMode]);
-
-  const toggleDarkMode = () => setIsDarkMode(!isDarkMode);
-
+  // Application is now locked to light mode by removing theme state and effects.
+  
   return (
-    <div className={`relative overflow-x-hidden transition-colors duration-300 ${isDarkMode ? 'bg-jet' : 'bg-white'}`}>
-      <Navbar isDarkMode={isDarkMode} toggleDarkMode={toggleDarkMode} />
+    <div className="relative overflow-x-hidden bg-white transition-colors duration-300">
+      <Navbar />
       <main>
         <Hero />
         <About />
