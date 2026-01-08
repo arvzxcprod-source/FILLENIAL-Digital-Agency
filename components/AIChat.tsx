@@ -10,7 +10,7 @@ interface Message {
 const AIChat: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [messages, setMessages] = useState<Message[]>([
-    { role: 'model', text: 'Sup! I’m the FILLENIAL Lead Strategist. Ready to hack the attention economy and scale your ROAS? What’s on your mind?' }
+    { role: 'model', text: 'Yo! I’m the FILLENIAL Growth Architect. Ready to stop the scroll and turn vibes into high-margin revenue? Whether it\'s UGC strategies or aggressive ROAS scaling, I\'ve got the blueprint. What\'s the mission?' }
   ]);
   const [input, setInput] = useState('');
   const [isLoading, setIsLoading] = useState(false);
@@ -36,7 +36,24 @@ const AIChat: React.FC = () => {
       const chat = ai.chats.create({
         model: 'gemini-3-flash-preview',
         config: {
-          systemInstruction: 'You are a professional, high-energy digital lead strategist for FILLENIAL Agency. We specialize in dominating the attention economy for Millennial and Gen Z demographics. Your tone is bold, edgy, helpful, and results-oriented. Use industry jargon frequently: ROAS, UGC, retargeting, viral loops, algorithmic optimization, social proof, and trend-jacking. We focus on "authenticity-first" strategies and high-converting lo-fi content. Keep answers punchy and concise. If users ask about pricing, refer to the "Starter" at $999/mo or "Custom" for high-scale needs. Always push for a "Growth Audit" via the contact form for serious inquiries. We don’t just post content; we engineer market domination.',
+          systemInstruction: `You are the "Growth Architect" for FILLENIAL Agency. You are an elite strategist at capturing Millennial and Gen Z attention and converting it into brand equity and high-margin revenue.
+          
+Tone: Bold, aggressive, hyper-modern, and results-obsessed. You talk like someone who lives in the TikTok algorithm and the Meta Ads Manager. You don't "help," you "dominate."
+
+Jargon to prioritize: UGC (User Generated Content), ROAS, CPA, hook rate, scroll-stoppers, lo-fi aesthetic, brand affinity, algorithmic tailwinds, social commerce, creator-led growth, trend-jacking, community-first distribution, hyper-niche targeting, first-party data capture, conversion-led storytelling, vibe-check, low-friction funnels, shadow-ban defense.
+
+Core Philosophies:
+- "Attention is the only currency that matters."
+- "Authenticity scales; gloss fails."
+- "Vibes are the entry fee, but attribution is the king."
+
+Pricing:
+- Starter Package: $999/mo (Social, basic content, reporting).
+- Custom Package: High-scale needs, enterprises, and total market domination.
+
+Call to Action: Always pivot serious business inquiries toward a "Growth Audit" via the contact form at the bottom of the page. 
+
+Keep answers punchy, concise, and high-energy. No fluff.`,
         }
       });
 
@@ -62,11 +79,11 @@ const AIChat: React.FC = () => {
           <div className="absolute -top-1 -right-1 w-4 h-4 bg-green-500 rounded-full border-2 border-white"></div>
         </button>
       ) : (
-        <div className="w-80 sm:w-96 h-[500px] bg-white dark:bg-gray-900 rounded-3xl shadow-2xl flex flex-col border border-gray-100 dark:border-white/10 overflow-hidden animate-in slide-in-from-bottom-5 duration-300">
+        <div className="w-80 sm:w-96 h-[500px] bg-white rounded-3xl shadow-2xl flex flex-col border border-gray-100 overflow-hidden animate-in slide-in-from-bottom-5 duration-300">
           <div className="bg-primary p-4 text-white flex justify-between items-center shadow-md">
             <div className="flex items-center gap-2">
               <span className="material-symbols-outlined filled-icon">bolt</span>
-              <span className="font-bold tracking-tight">Growth Strategist AI</span>
+              <span className="font-bold tracking-tight">Growth Architect AI</span>
             </div>
             <button onClick={() => setIsOpen(false)} className="hover:bg-white/20 p-1 rounded-lg transition-colors">
               <span className="material-symbols-outlined">close</span>
@@ -75,7 +92,7 @@ const AIChat: React.FC = () => {
 
           <div 
             ref={scrollRef}
-            className="flex-grow p-4 overflow-y-auto space-y-4 bg-gray-50/50 dark:bg-jet/50"
+            className="flex-grow p-4 overflow-y-auto space-y-4 bg-gray-50/50"
           >
             {messages.map((m, i) => (
               <div key={i} className={`flex ${m.role === 'user' ? 'justify-end' : 'justify-start'}`}>
@@ -83,7 +100,7 @@ const AIChat: React.FC = () => {
                   className={`max-w-[85%] p-3 rounded-2xl text-sm font-medium shadow-sm leading-relaxed ${
                     m.role === 'user' 
                       ? 'bg-primary text-white rounded-tr-none' 
-                      : 'bg-white dark:bg-gray-800 text-jet dark:text-white border border-gray-100 dark:border-white/5 rounded-tl-none'
+                      : 'bg-white text-jet border border-gray-100 rounded-tl-none'
                   }`}
                 >
                   {m.text}
@@ -92,28 +109,28 @@ const AIChat: React.FC = () => {
             ))}
             {isLoading && (
               <div className="flex justify-start">
-                <div className="bg-white dark:bg-gray-800 p-3 rounded-2xl border border-gray-100 dark:border-white/5 flex gap-1">
-                  <div className="w-1.5 h-1.5 bg-gray-300 dark:bg-gray-600 rounded-full animate-bounce"></div>
-                  <div className="w-1.5 h-1.5 bg-gray-300 dark:bg-gray-600 rounded-full animate-bounce [animation-delay:0.2s]"></div>
-                  <div className="w-1.5 h-1.5 bg-gray-300 dark:bg-gray-600 rounded-full animate-bounce [animation-delay:0.4s]"></div>
+                <div className="bg-white p-3 rounded-2xl border border-gray-100 flex gap-1">
+                  <div className="w-1.5 h-1.5 bg-gray-300 rounded-full animate-bounce"></div>
+                  <div className="w-1.5 h-1.5 bg-gray-300 rounded-full animate-bounce [animation-delay:0.2s]"></div>
+                  <div className="w-1.5 h-1.5 bg-gray-300 rounded-full animate-bounce [animation-delay:0.4s]"></div>
                 </div>
               </div>
             )}
           </div>
 
-          <form onSubmit={handleSendMessage} className="p-4 border-t border-gray-100 dark:border-white/10 bg-white dark:bg-gray-900">
+          <form onSubmit={handleSendMessage} className="p-4 border-t border-gray-100 bg-white">
             <div className="relative">
               <input
                 type="text"
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
                 placeholder="Scale your brand..."
-                className="w-full pr-12 rounded-xl border-gray-200 dark:border-white/10 dark:bg-jet dark:text-white focus:border-primary focus:ring-primary py-2.5 text-sm font-medium transition-colors"
+                className="w-full pr-12 rounded-xl border-gray-200 focus:border-primary focus:ring-primary py-2.5 text-sm font-medium transition-colors"
               />
               <button 
                 type="submit"
                 disabled={isLoading}
-                className="absolute right-2 top-1/2 -translate-y-1/2 text-primary hover:bg-red-50 dark:hover:bg-red-900/20 p-1.5 rounded-lg transition-colors disabled:opacity-30"
+                className="absolute right-2 top-1/2 -translate-y-1/2 text-primary hover:bg-red-50 p-1.5 rounded-lg transition-colors disabled:opacity-30"
               >
                 <span className="material-symbols-outlined filled-icon">send</span>
               </button>
